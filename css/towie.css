@@ -1,0 +1,158 @@
+/* ---------- Towie mascot ---------- */
+.towie{position:relative;width:100%;height:100%}
+.towie-svg{width:100%;height:100%;overflow:visible;display:block}
+.towie-svg *{transform-box:view-box}
+.tw-all{transform-origin:110px 228px}
+.tw-armL{transform-origin:54px 132px}
+.tw-armR{transform-origin:166px 132px}
+.tw-eyes{transform-origin:110px 122px}
+.tw-face{transform-origin:110px 130px}
+.tw-pupils{transition:transform .25s}
+.tw-bagwrap,.tw-beakwrap{transform-origin:54px 178px}
+.tw-bag,.tw-beaker{transform-origin:54px 178px}
+.tw-penwrap,.tw-pen{transform-origin:166px 178px}
+.tw-ember,.tw-glow{transform-origin:181px 152px}
+.tw-prop{opacity:0}
+.tw-happyeyes,.tw-puff,.tw-m,.tw-sweat,.tw-smoke circle,.tw-ring,.tw-spark{opacity:0}
+.tw-m-smile{opacity:1}
+.tw-puffc,.tw-ring{transform-origin:110px 146px}
+.tw-spark{transform-origin:var(--sx) var(--sy)}
+.tw-brow{transition:transform .3s}
+.tw-browL{transform-origin:92px 102px}.tw-browR{transform-origin:128px 102px}
+.blink .tw-eyes{transform:scaleY(.08)}
+.idle .tw-all{animation:twBreath 3.4s ease-in-out infinite}
+.idle .tw-tassel:nth-child(odd){animation:twTassel 2.6s ease-in-out infinite}
+.tw-tassel{transform-origin:center 66px;transform-box:fill-box}
+@keyframes twBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(.99,1.025)}}
+@keyframes twTassel{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+/* moods */
+.mood-worried .tw-m-smile{opacity:0}.mood-worried .tw-m-worry{opacity:1}
+.mood-worried .tw-sweat{opacity:1;animation:twSweat 1.8s ease-in infinite}
+.mood-worried .tw-browL{transform:rotate(-14deg) translateY(-2px)}.mood-worried .tw-browR{transform:rotate(14deg) translateY(-2px)}
+.mood-worried .tw-lid{opacity:0}
+.mood-happy .tw-browL{transform:translateY(-2px)}.mood-happy .tw-browR{transform:translateY(-2px)}
+@keyframes twSweat{0%{transform:translateY(-4px);opacity:0}25%{opacity:1}100%{transform:translateY(12px);opacity:0}}
+
+/* ===== JOINT: exactly 5s (hit -> hold -> exhale) ===== */
+.a-joint .tw-all{animation:jBody 5s ease-in-out both}
+.a-joint .tw-armR{animation:jArm 5s ease-in-out both}
+.a-joint .tw-joint{animation:jProp 5s linear both}
+.a-joint .tw-ember{animation:jEmber 5s ease-in-out both}
+.a-joint .tw-glow{animation:jGlow 5s ease-in-out both}
+.a-joint .tw-eyes{animation:jEyes 5s ease-in-out both}
+.a-joint .tw-m-smile{animation:jSmile 5s linear both}
+.a-joint .tw-m-worry{opacity:0}
+.a-joint .tw-m-o{animation:jO 5s linear both}
+.a-joint .tw-puff{animation:jPuff 5s ease-in-out both}
+.a-joint .tw-blush{animation:jBlush 5s linear both}
+.a-joint .tw-puffc{animation:smk var(--d) cubic-bezier(.2,.6,.4,1) var(--del) both}
+.a-joint .p0{--d:2.2s;--del:2.8s;--dx:-18px}
+.a-joint .p1{--d:2.05s;--del:2.95s;--dx:14px}
+.a-joint .p2{--d:1.9s;--del:3.1s;--dx:-30px}
+.a-joint .p3{--d:1.75s;--del:3.25s;--dx:24px}
+.a-joint .p4{--d:1.6s;--del:3.4s;--dx:-6px}
+.a-joint .tw-ring{animation:smkRing 1.9s ease-out 3.1s both}
+@keyframes jBody{0%,14%{transform:none}30%{transform:rotate(-3deg) scale(1.02,1.03)}52%{transform:rotate(-3deg) scale(1.045,1.04)}60%{transform:rotate(2deg) scale(1,1)}78%{transform:rotate(-1.5deg)}100%{transform:none}}
+@keyframes jArm{0%{transform:rotate(0)}16%{transform:rotate(75deg)}44%{transform:rotate(75deg)}58%{transform:rotate(10deg)}100%{transform:rotate(0)}}
+@keyframes jProp{0%{opacity:0}5%{opacity:1}94%{opacity:1}100%{opacity:0}}
+@keyframes jEmber{0%,16%{transform:scale(1);fill:#ff5a1a}22%{transform:scale(1.6);fill:#ffd36a}38%{transform:scale(1.45);fill:#ffb03a}46%,100%{transform:scale(1);fill:#ff5a1a}}
+@keyframes jGlow{0%,16%{transform:scale(.8);opacity:.5}22%,38%{transform:scale(2);opacity:1}48%,100%{transform:scale(.8);opacity:.5}}
+@keyframes jEyes{0%,17%{transform:scaleY(1)}22%,50%{transform:scaleY(.28)}56%{transform:scaleY(1)}68%,90%{transform:scaleY(.5)}100%{transform:scaleY(1)}}
+@keyframes jSmile{0%,14%{opacity:1}16%,94%{opacity:0}100%{opacity:1}}
+@keyframes jO{0%,15%{opacity:0}17%,35%{opacity:1}37%,55%{opacity:0}57%,92%{opacity:1}95%,100%{opacity:0}}
+@keyframes jPuff{0%,35%{opacity:0;transform:scale(1)}38%{opacity:1;transform:scale(1.08)}46%{transform:scale(1.14)}55%{opacity:1;transform:scale(1.1)}57%,100%{opacity:0}}
+@keyframes jBlush{0%,50%{opacity:1}58%,92%{opacity:1;filter:saturate(2)}100%{opacity:1}}
+@keyframes smk{0%{opacity:0;transform:translate(0,0) scale(.3)}14%{opacity:.9}100%{opacity:0;transform:translate(var(--dx),-130px) scale(2.6)}}
+@keyframes smkRing{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:.95}100%{opacity:0;transform:translate(10px,-110px) scale(3.2)}}
+
+/* ===== BAGGIE (tap Towie) 3s ===== */
+.a-bag .tw-armL{animation:bArm 3s ease-in-out both}
+.a-bag .tw-bagwrap{animation:bCounter 3s ease-in-out both}
+.a-bag .tw-bag{animation:bBag 3s ease-in-out both}
+.a-bag .tw-eyes{animation:hideMid 3s linear both}
+.a-bag .tw-happyeyes{animation:showMid 3s linear both}
+.a-bag .tw-m-smile{animation:hideMid 3s linear both}
+.a-bag .tw-m-grin{animation:showMid 3s linear both}
+.a-bag .tw-all{animation:bHop 3s ease-in-out both}
+.a-bag .tw-spark{animation:spark 3s ease-out both}
+.a-bag .tw-spark:nth-child(n+4){animation:none}
+@keyframes bArm{0%{transform:rotate(0)}12%{transform:rotate(-25deg)}30%{transform:rotate(145deg)}40%{transform:rotate(132deg)}50%{transform:rotate(150deg)}60%{transform:rotate(132deg)}72%{transform:rotate(145deg)}86%{transform:rotate(-20deg)}100%{transform:rotate(0)}}
+@keyframes bCounter{0%{transform:rotate(0)}12%{transform:rotate(25deg)}30%{transform:rotate(-145deg)}40%{transform:rotate(-132deg)}50%{transform:rotate(-150deg)}60%{transform:rotate(-132deg)}72%{transform:rotate(-145deg)}86%{transform:rotate(20deg)}100%{transform:rotate(0)}}
+@keyframes bBag{0%,12%{opacity:0;transform:scale(.2)}20%{opacity:1;transform:scale(1.15)}27%{transform:scale(1)}40%{transform:scale(1) rotate(-6deg)}50%{transform:scale(1.05) rotate(6deg)}60%{transform:scale(1) rotate(-4deg)}80%{opacity:1;transform:scale(1)}88%,100%{opacity:0;transform:scale(.15)}}
+@keyframes bHop{0%,26%{transform:none}32%{transform:translateY(-8px) scale(.98,1.03)}38%{transform:none}100%{transform:none}}
+@keyframes hideMid{0%,18%{opacity:1}22%,82%{opacity:0}88%,100%{opacity:1}}
+@keyframes showMid{0%,18%{opacity:0}22%,82%{opacity:1}88%,100%{opacity:0}}
+@keyframes spark{0%,28%{opacity:0;transform:scale(0) rotate(0)}38%{opacity:1;transform:scale(1.3) rotate(45deg)}55%{opacity:1;transform:scale(.8) rotate(90deg)}66%{opacity:1;transform:scale(1.2) rotate(135deg)}80%,100%{opacity:0;transform:scale(0) rotate(180deg)}}
+
+/* ===== pH: pen out + nod 2.4s ===== */
+.a-ph .tw-armR{animation:pArm 2.4s ease-in-out both}
+.a-ph .tw-penwrap{animation:pCounter 2.4s ease-in-out both}
+.a-ph .tw-pen{animation:propShow 2.4s linear both}
+.a-ph .tw-face{animation:nod 2.4s ease-in-out both}
+.a-ph .tw-pupils{transform:translate(4px,2px)}
+@keyframes pArm{0%{transform:rotate(0)}20%,82%{transform:rotate(40deg)}100%{transform:rotate(0)}}
+@keyframes pCounter{0%{transform:rotate(0)}20%,82%{transform:rotate(-40deg)}100%{transform:rotate(0)}}
+@keyframes propShow{0%{opacity:0}10%,88%{opacity:1}100%{opacity:0}}
+@keyframes nod{0%,25%{transform:none}33%{transform:translateY(5px)}41%{transform:none}49%{transform:translateY(5px)}57%{transform:none}65%{transform:translateY(5px)}73%,100%{transform:none}}
+
+/* ===== MIX: shake beaker 2.2s ===== */
+.a-mix .tw-armL{animation:mArm 2.2s ease-in-out both}
+.a-mix .tw-beakwrap{animation:mCounter 2.2s ease-in-out both}
+.a-mix .tw-beaker{animation:propShow 2.2s linear both}
+.a-mix .tw-bub{animation:bub .5s ease-in infinite}.a-mix .b2{animation-delay:.15s}.a-mix .b3{animation-delay:.3s}
+.a-mix .tw-pupils{transform:translate(-4px,0)}
+.a-mix .tw-m-smile{opacity:0}.a-mix .tw-m-grin{opacity:1}
+@keyframes mArm{0%{transform:rotate(0)}18%{transform:rotate(55deg)}28%{transform:rotate(42deg)}38%{transform:rotate(62deg)}48%{transform:rotate(42deg)}58%{transform:rotate(62deg)}68%{transform:rotate(45deg)}82%{transform:rotate(55deg)}100%{transform:rotate(0)}}
+@keyframes mCounter{0%{transform:rotate(0)}18%{transform:rotate(-55deg)}28%{transform:rotate(-42deg)}38%{transform:rotate(-62deg)}48%{transform:rotate(-42deg)}58%{transform:rotate(-62deg)}68%{transform:rotate(-45deg)}82%{transform:rotate(-55deg)}100%{transform:rotate(0)}}
+@keyframes bub{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-18px);opacity:0}}
+
+/* ===== CHEER: jump 1.6s ===== */
+.a-cheer .tw-all{animation:jump 1.6s cubic-bezier(.3,.7,.4,1) both}
+.a-cheer .tw-armL{animation:upL 1.6s ease-in-out both}
+.a-cheer .tw-armR{animation:upR 1.6s ease-in-out both}
+.a-cheer .tw-eyes,.a-cheer .tw-m-smile,.a-cheer .tw-m-worry,.a-cheer .tw-sweat{opacity:0;animation:none}
+.a-cheer .tw-happyeyes,.a-cheer .tw-m-grin{opacity:1}
+.a-cheer .tw-spark{animation:spark2 1.6s ease-out both}
+@keyframes jump{0%{transform:none}12%{transform:scale(1.08,.9)}35%{transform:translateY(-34px) scale(.96,1.05)}55%{transform:translateY(-34px) rotate(4deg)}75%{transform:scale(1.06,.92)}88%{transform:translateY(-8px)}100%{transform:none}}
+@keyframes upL{0%,100%{transform:rotate(0)}25%,80%{transform:rotate(150deg)}50%{transform:rotate(165deg)}}
+@keyframes upR{0%,100%{transform:rotate(0)}25%,80%{transform:rotate(-150deg)}50%{transform:rotate(-165deg)}}
+@keyframes spark2{0%,15%{opacity:0;transform:scale(0)}40%{opacity:1;transform:scale(1.4) rotate(90deg)}100%{opacity:0;transform:scale(.2) rotate(200deg)}}
+
+/* ===== POINT 1.8s ===== */
+.a-point .tw-armR{animation:ptArm 1.8s ease-in-out both}
+.a-point .tw-pupils{transform:translate(4px,-2px)}
+.a-point .tw-face{animation:tiltF 1.8s ease-in-out both}
+@keyframes ptArm{0%{transform:rotate(0)}22%{transform:rotate(-105deg)}35%{transform:rotate(-98deg)}48%{transform:rotate(-108deg)}80%{transform:rotate(-105deg)}100%{transform:rotate(0)}}
+@keyframes tiltF{0%,100%{transform:none}25%,80%{transform:rotate(5deg)}}
+
+/* ===== WORRY 2.2s ===== */
+.a-worry .tw-all{animation:wiggle 2.2s ease-in-out both}
+.a-worry .tw-m-smile{opacity:0}.a-worry .tw-m-worry{opacity:1}
+.a-worry .tw-sweat{animation:twSweat .9s ease-in 2 both}
+.a-worry .tw-lid{opacity:0}
+.a-worry .tw-browL{transform:rotate(-16deg) translateY(-2px)}.a-worry .tw-browR{transform:rotate(16deg) translateY(-2px)}
+.a-worry .tw-armL{animation:wArmL 2.2s ease-in-out both}.a-worry .tw-armR{animation:wArmR 2.2s ease-in-out both}
+@keyframes wiggle{0%,100%{transform:none}10%,30%,50%,70%{transform:rotate(-4deg) translateX(-3px)}20%,40%,60%,80%{transform:rotate(4deg) translateX(3px)}}
+@keyframes wArmL{0%,100%{transform:rotate(0)}20%,80%{transform:rotate(-35deg)}}
+@keyframes wArmR{0%,100%{transform:rotate(0)}20%,80%{transform:rotate(35deg)}}
+
+/* ===== WAVE / SPIN / TILT ===== */
+.a-wave .tw-armR{animation:wave 1.6s ease-in-out both}
+.a-wave .tw-m-smile{opacity:0}.a-wave .tw-m-grin{opacity:1}
+@keyframes wave{0%,100%{transform:rotate(0)}18%{transform:rotate(-150deg)}34%{transform:rotate(-120deg)}50%{transform:rotate(-155deg)}66%{transform:rotate(-120deg)}82%{transform:rotate(-150deg)}}
+.a-spin .tw-all{animation:spin 1s ease-in-out both}
+@keyframes spin{0%{transform:none}25%{transform:translateY(-14px) scaleX(0.05)}50%{transform:translateY(-18px) scaleX(-1)}75%{transform:translateY(-14px) scaleX(-0.05)}100%{transform:none}}
+.a-tilt .tw-all{animation:tilt 1.4s ease-in-out both}.a-tilt .tw-pupils{transform:translate(-2px,-3px)}
+@keyframes tilt{0%,100%{transform:none}25%,75%{transform:rotate(9deg)}}
+
+/* Speech bubble */
+.tw-bubble{position:absolute;bottom:96%;right:30%;min-width:120px;max-width:210px;padding:8px 12px;border-radius:16px;background:#fff;color:#2a1250;
+ font:800 13px/1.25 'M PLUS Rounded 1c',system-ui,sans-serif;border:2.5px solid #2a1250;box-shadow:3px 3px 0 #2a1250;opacity:0;transform:translateY(8px) scale(.85);
+ transform-origin:85% 100%;transition:opacity .2s,transform .25s cubic-bezier(.3,1.6,.5,1);pointer-events:none;text-align:left}
+.tw-bubble::after{content:'';position:absolute;right:14px;bottom:-10px;width:14px;height:14px;background:#fff;border-right:2.5px solid #2a1250;border-bottom:2.5px solid #2a1250;transform:rotate(45deg)}
+.tw-bubble.show{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.idle .tw-all,.idle .tw-tassel{animation:none!important}}
+/* clipboard prop (Export screen) */
+.towie-svg.hold-clip .tw-clip{opacity:1}
+.towie-svg.hold-clip .tw-armL{transform-box:fill-box;transform-origin:50% 10%;transform:rotate(14deg)}
+.towie-svg.hold-clip .tw-m-smile{opacity:1}
